@@ -2,8 +2,8 @@ try {
    timeout(time: 20, unit: 'MINUTES') {
       node{
           stage('build') {
-            //openshiftBuild(buildConfig: 'nodejs-mongodb-example', showBuildLogs: 'true')
-          	echo "build"
+            openshiftBuild(buildConfig: 'springboot-backend', showBuildLogs: 'true')
+  
 	   }
           stage('test'){
             echo "test"
