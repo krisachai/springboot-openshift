@@ -5,7 +5,7 @@ try {
    node{
 	  stage('test'){
 	  git 'https://github.com/krisachai/springboot-openshift.git'
-   	  mvnHome tool 'M3'
+   	  mvnHome = tool 'M3'
           sh "'${mvnHome}/bin/mvn' clean test"	
 	}
           stage('build') {
