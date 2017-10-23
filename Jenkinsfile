@@ -6,7 +6,7 @@ try {
 	  stage('test'){
 	  git 'https://github.com/krisachai/springboot-openshift.git'
    	  mvnHome = tool 'M3'
-          sh "'${mvnHome}/bin/mvn' --setings configuration/settings.xml clean test"	
+          sh "'${mvnHome}/bin/mvn' --settings configuration/settings.xml clean test"	
 	}
           stage('build') {
             openshiftBuild(buildConfig: 'springboot-backend', showBuildLogs: 'true')
