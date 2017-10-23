@@ -1,13 +1,18 @@
 try {
+   
    timeout(time: 20, unit: 'MINUTES') {
-      node{
+   def mvnHome   
+   node{
+	  stage('test'){
+	  git 'https://github.com/krisachai/springboot-openshift.git'
+   	  mvnHome tool 'M3'
+          sh "'${mvnHome}/bin/mvn' clean test"	
+	}
           stage('build') {
             openshiftBuild(buildConfig: 'springboot-backend', showBuildLogs: 'true')
   
 	   }
-          stage('test'){
-            echo "test"
-            }
+          
           stage('deploy') {
            // openshiftDeploy(deploymentConfig: 'nodejs-mongodb-example')
           	echo "deploy"
